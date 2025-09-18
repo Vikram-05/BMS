@@ -1,3 +1,4 @@
+
 import { useState } from 'react'
 import DoctorDashboard from './Pages/DoctorDashboard'
 import PatientDashboard from './Pages/PatientDashboard2'
@@ -6,8 +7,9 @@ import AiGenerated from './Pages/AiGenerated'
 import PatientSignup from './Pages/PatientSignup'
 import PatientLogin from './Pages/PatientLogin'
 
+
+
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
@@ -20,4 +22,4 @@ function App() {
   )
 }
 
-export default App
+export default App;
