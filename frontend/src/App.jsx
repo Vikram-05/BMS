@@ -7,7 +7,7 @@ import AiGenerated from './Pages/AiGenerated'
 import PatientSignup from './Pages/PatientSignup'
 import PatientLogin from './Pages/PatientLogin'
 import DoctorSignup from './Pages/DoctorSignup'
-
+import DoctorLogin from './Pages/PatientLogin'
 
 function App() {
 
@@ -18,7 +18,8 @@ function App() {
     {/* <AiGenerated /> */}
     {/* <PatientDashboard /> */}
       {/* <DoctorDashboard /> */}
-      <DoctorSignup/>
+      {/* <DoctorSignup/> */}
+      <DoctorLogin/>
     </>
   )
 }
