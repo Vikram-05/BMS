@@ -6,7 +6,7 @@ import './App.css'
 import AiGenerated from './Pages/AiGenerated'
 import PatientSignup from './Pages/PatientSignup'
 import PatientLogin from './Pages/PatientLogin'
-
+import DoctorSignup from './Pages/DoctorSignup'
 
 
 function App() {
@@ -14,10 +14,11 @@ function App() {
   return (
     <>
     {/* <PatientLogin /> */}
-    <PatientSignup />
+    {/* <PatientSignup /> */}
     {/* <AiGenerated /> */}
     {/* <PatientDashboard /> */}
       {/* <DoctorDashboard /> */}
+      <DoctorSignup/>
     </>
   )
 }
