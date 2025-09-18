@@ -2,7 +2,6 @@ import React from 'react'
 
 function DoctorSignup() {
 
-
     return (
         <div className="h-auto bg-slate-950 text-slate-200 antialiased selection:bg-cyan-500/30 selection:text-cyan-100"  style={{ fontFamily: 'Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica Neue, Arial' }}>
 
