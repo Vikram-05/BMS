@@ -21,6 +21,7 @@ public class DiagnosisResponse {
     private List<String> recommendedTest;
     private String description;
     private String medicineId;
+    private String doctorName;
     private LocalDateTime createdAt;
     private LocalDateTime upadtedAt;
 }

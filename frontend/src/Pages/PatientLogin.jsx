@@ -1,8 +1,10 @@
 import React, { useState, useContext } from 'react'
 import { UserInfo } from '../contexts/UserInfoProvider';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function PatientLogin() {
+    const navigate = useNavigate()
     
     const {
         setUserId,
@@ -13,6 +15,7 @@ function PatientLogin() {
         setUserAge,
         setUserPhoneNumber,
         setUserGender,
+        setUserBloodGroup
       } = useContext(UserInfo);
       const [email1, setEmail] = useState("");
       const [password1, setPassword] = useState("")
@@ -22,7 +25,8 @@ function PatientLogin() {
             const response = await axios.post(`${import.meta.env.VITE_SERVER_URL}/user/login`, { email:email1, password:password1 });
             const { fullName, aadhar, phoneNumber, email, password, age, bloodGroup, gender, id, role } = response.data
             localStorage.setItem("userId", id);
-            console.log("aa ", fullName, aadhar, phoneNumber, email, password, age, bloodGroup, gender, id, gender)
+            // console.log("aa ", fullName, aadhar, phoneNumber, email, password, age, bloodGroup, gender, id, gender)
+            console.log("aa ",response.data)
             setUserId(id);
             setUserRole(role);
             setAadhar(aadhar);
@@ -31,6 +35,8 @@ function PatientLogin() {
             setUserEmail(email);
             setUserAge(age);
             setUserGender(gender);
+            setUserBloodGroup(bloodGroup)
+            navigate("/patient-dashboard")
         } catch (error){
             console.log("error in patient login",error)
         }
@@ -124,7 +130,7 @@ function PatientLogin() {
                                     </button>
                                     <div className="mt-3 text-center text-sm text-slate-400">
                                         Already have an account?
-                                        <a href="#" className="ml-1 font-medium text-cyan-300 hover:text-cyan-200 hover:underline underline-offset-2">Log in</a>
+                                        <a onClick={()=>{navigate("/patient-signup")}} href="#" className="ml-1 font-medium text-cyan-300 hover:text-cyan-200 hover:underline underline-offset-2">Signup</a>
                                     </div>
                                 </div>
 

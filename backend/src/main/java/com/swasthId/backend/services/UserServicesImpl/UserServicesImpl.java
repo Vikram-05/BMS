@@ -58,6 +58,9 @@ public class UserServicesImpl implements UserServices {
         newUser.setRole(savedUser.getRole());
         newUser.setPhoneNumber(savedUser.getPhoneNumber());
         newUser.setPassword(savedUser.getPassword());
+        newUser.setAge(savedUser.getAge());
+        newUser.setBloodGroup(savedUser.getBloodGroup());
+        newUser.setGender(savedUser.getGender());
         newUser.setCreatedAt(savedUser.getCreatedAt());
         newUser.setUpdatedAt(savedUser.getUpdatedAt());
         return newUser;

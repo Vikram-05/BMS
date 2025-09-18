@@ -49,6 +49,7 @@ public class DiagnosisServicesImpl implements DiagnosisServices {
         changed.setDoctorId(diagnosis.getMedicineId());
         changed.setRecommendedTest(diagnosis.getRecommendedTest());
         changed.setMedicineId(diagnosis.getMedicineId());
+        changed.setDoctorName(diagnosis.getDoctorName());
         changed.setCreatedAt(diagnosis.getCreatedAt());
         changed.setUpadtedAt(diagnosis.getUpadtedAt());
         return changed;

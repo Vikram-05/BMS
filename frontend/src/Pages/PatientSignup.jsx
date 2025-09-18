@@ -1,9 +1,13 @@
 import React, { useState,useContext} from 'react';
 import axios from 'axios';
 import {UserInfo} from '../contexts/UserInfoProvider'
+import { useNavigate } from 'react-router-dom';
+
+
 
 
 function PatientSignup() {
+  const navigate = useNavigate()
     const {
     setUserId,
     setUserFullName,
@@ -12,7 +16,7 @@ function PatientSignup() {
     setUserRole,
     setUserAge,
     setUserPhoneNumber,
-    setUserGender,
+    setUserGender, setUserBloodGroup
   } = useContext(UserInfo);
 
   const [formData, setFormData] = useState({
@@ -125,6 +129,8 @@ function PatientSignup() {
       setUserEmail(email);
       setUserAge(age);
       setUserGender(gender);
+      setUserBloodGroup(bloodGroup)
+      navigate("/patient-dashboard")
       
       
       // Handle successful signup

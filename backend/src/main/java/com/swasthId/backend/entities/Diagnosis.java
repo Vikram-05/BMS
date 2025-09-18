@@ -27,6 +27,7 @@ public class Diagnosis {
     private List<String> recommendedTest;
     private String description;
     private String medicineId;
+    private String doctorName;
     @CreatedDate
     private LocalDateTime createdAt;
     @LastModifiedDate

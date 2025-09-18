@@ -20,6 +20,8 @@ public class UserResponse {
     private String phoneNumber;
     private String email;
     private String password;
+    private String bloodGroup;
+    private String gender;
     private String age;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;

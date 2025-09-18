@@ -10,6 +10,7 @@ function UserInfoProvider({ children }) {
   const [userRole, setUserRole] = useState("");
   const [userAge, setUserAge] = useState("");
   const [userGender, setUserGender] = useState("");
+  const [userBloodGroup, setUserBloodGroup] = useState("");
   const [userPhoneNumber, setUserPhoneNumber] = useState(""); 
   
   return (
@@ -31,6 +32,7 @@ function UserInfoProvider({ children }) {
         setUserGender,
         userPhoneNumber,
         setUserPhoneNumber,
+        userBloodGroup, setUserBloodGroup
       }}
     >
       {children}
