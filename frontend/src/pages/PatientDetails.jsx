@@ -39,7 +39,7 @@ function PatientDetails() {
         
         <button id="shareBtn" className="inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-white bg-gradient-to-r from-cyan-500/90 to-emerald-500/90 hover:from-cyan-400 hover:to-emerald-400 transition">
         <IoIosArrowBack />
-          Back
+          Back 
         </button>
       </div>
     </div>
