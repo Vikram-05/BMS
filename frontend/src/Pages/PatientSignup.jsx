@@ -1,7 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState,useContext} from 'react';
 import axios from 'axios';
+import {UserInfo} from '../contexts/UserInfoProvider'
+
 
 function PatientSignup() {
+    const {
+    setUserId,
+    setUserFullName,
+    setUserEmail,
+    setAadhar,
+    setUserRole,
+    setUserAge,
+    setUserPhoneNumber,
+    setUserGender,
+  } = useContext(UserInfo);
+
   const [formData, setFormData] = useState({
     fullName: '',
     aadhar: '',
@@ -101,8 +114,18 @@ function PatientSignup() {
       
       const response = await axios.post(`${import.meta.env.VITE_SERVER_URL}/user/signup`, submitData);
 
-      const {fullName,aadhar,phoneNumber,email,password,age,bloodGroup,gender} = response.data
-      console.log("aa ",fullName,aadhar,phoneNumber,email,password,age,bloodGroup,gender)
+      const {fullName,aadhar,phoneNumber,email,password,age,bloodGroup,gender,id,role} = response.data
+      localStorage.setItem("userId",id);
+      console.log("aa ",fullName,aadhar,phoneNumber,email,password,age,bloodGroup,gender,id,gender)
+      setUserId(id);
+      setUserRole(role);
+      setAadhar(aadhar);
+      setUserFullName(fullName);
+      setUserPhoneNumber(phoneNumber);
+      setUserEmail(email);
+      setUserAge(age);
+      setUserGender(gender);
+      
       
       // Handle successful signup
       console.log('Signup successful:', response.data);

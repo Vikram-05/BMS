@@ -16,6 +16,7 @@ public class UserServicesImpl implements UserServices {
 
     @Override
     public UserResponse saveUser(User user){
+        user.setRole("USER");
         User savedUser = userRepo.saveUser(user);
         return convertUserIntoDTO(savedUser);
     }

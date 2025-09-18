@@ -13,8 +13,8 @@ function App() {
 
   return (
     <>
-    {/* <PatientLogin /> */}
-    <PatientSignup />
+    <PatientLogin />
+    {/* <PatientSignup /> */}
     {/* <AiGenerated /> */}
     {/* <PatientDashboard /> */}
       {/* <DoctorDashboard /> */}

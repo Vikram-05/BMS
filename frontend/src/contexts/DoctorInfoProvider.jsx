@@ -3,7 +3,7 @@ import React, { useState, createContext } from 'react'
 export const doctorInfo = createContext();
 
 
-function UserInfoProvider({ children }) {
+function DoctorInfoProvider({ children }) {
   const [doctorId, setDoctorId] = useState("");
   const [doctorFullName, setDoctorFullName] = useState("");
   const [doctorEmail, setDoctorEmail] = useState("");
