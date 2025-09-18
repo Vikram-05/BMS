@@ -1,6 +1,87 @@
 import React from 'react'
+import { doctorInfo } from '../contexts/DoctorInfoProvider';
 
 function DoctorSignup() {
+    const {
+        setDoctorId,
+        setDoctorFullName,
+        setDoctorEmail,
+        setDoctorAadhar,
+        setRole,
+        setDoctorLicense,
+        setDoctorPhoneNumber,
+        setDoctorSpecializations,
+  } = useContext(doctorInfo);
+
+  const [formData, setFormData] = useState({
+    fullName: '',
+    aadhar: '',
+    phoneNumber: '',
+    email: '',
+    password: '',
+    specialization: '',
+    licence: '',
+    gender: ''
+  });
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+    if (!validateForm()) {
+      return;
+    }
+    
+    setIsSubmitting(true);
+  try {
+    // Format aadhar without dashes for backend
+    const submitData = {
+      ...formData,
+      aadhar: formData.aadhar.replace(/-/g, '')
+    };
+    
+    const response = await axios.post(`${import.meta.env.VITE_SERVER_URL}/doctor/signup`, submitData);
+
+    const {fullName,aadhar,phoneNumber,email,password,id,role,licence,specialization} = response.data
+    localStorage.setItem("doctorId",id);
+    console.log("aa ",fullName,aadhar,phoneNumber,email,password,age,bloodGroup,gender,id,gender)
+    setDoctorId(id);
+    setRole(role);
+    setDoctorAadhar(aadhar);
+    setDoctorFullName(fullName);
+    setDoctorPhoneNumber(phoneNumber);
+    setDoctorEmail(email);
+    setDoctorSpecializations(specialization);
+    setDoctorLicense(licence);
+    
+    
+    // Handle successful signup
+    console.log('Signup successful:', response.data);
+    alert('Account created successfully!');
+    
+    // Reset form
+    setFormData({
+      fullName: '',
+      aadhar: '',
+      phoneNumber: '',
+      email: '',
+      password: '',
+      age: '',
+      bloodGroup: '',
+      gender: ''
+    });
+    
+  } catch (error) {
+    console.error('Signup error:', error);
+    if (error.response && error.response.data) {
+      alert(`Signup failed: ${error.response.data.message}`);
+    } else {
+      alert('Signup failed. Please try again.');
+    }
+  } finally {
+    setIsSubmitting(false);
+  }
+};
+
+  
 
     return (
         <div className="h-auto bg-slate-950 text-slate-200 antialiased selection:bg-cyan-500/30 selection:text-cyan-100"  style={{ fontFamily: 'Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica Neue, Arial' }}>
@@ -206,4 +287,4 @@ function DoctorSignup() {
     )
 }
 
-export default DoctorSignup
+export default DoctorSignup;

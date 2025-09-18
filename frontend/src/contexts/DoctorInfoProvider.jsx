@@ -11,7 +11,6 @@ function DoctorInfoProvider({ children }) {
   const [role, setRole] = useState("");
   const [doctorLicense, setDoctorLicense] = useState("");
   const [doctorPhoneNumber, setDoctorPhoneNumber] = useState("");
-  const [doctorPassword, setDoctorPassword] = useState("");  
   const [doctorSpecializations, setDoctorSpecializations] = useState([]);  
 
   return (
