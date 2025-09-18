@@ -28,7 +28,7 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.CONFLICT).body("Email already exist");
         }
         UserResponse savedUser = userServices.saveUser(user);
-        return ResponseEntity.status(HttpStatus.OK).body(Map.of("User-data",savedUser));
+        return ResponseEntity.status(HttpStatus.OK).body(savedUser);
     }
 
     @PostMapping("/login")
