@@ -13,11 +13,7 @@ function App() {
 
   return (
     <>
-<<<<<<< HEAD
-    <PatientLogin />
-=======
     {/* <PatientLogin /> */}
->>>>>>> 259305b736e6bacada172e3f9fbcc52e59f70454
     {/* <PatientSignup /> */}
     {/* <AiGenerated /> */}
     {/* <PatientDashboard /> */}
