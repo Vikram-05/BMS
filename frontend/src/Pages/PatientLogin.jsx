@@ -1,6 +1,6 @@
 import React from 'react'
 
-function DoctorLogin() {
+function PatientLogin() {
   return (
     <div className="h-screen bg-slate-950 text-slate-200 antialiased selection:bg-cyan-500/30 selection:text-cyan-100"  style={{ fontFamily: 'Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica Neue, Arial' }}>
 
@@ -19,7 +19,7 @@ function DoctorLogin() {
                         </div>
                         <div className="flex flex-col">
                             <span className="text-sm text-slate-400">Healthcare AI</span>
-                            <span className="text-base font-medium tracking-tight text-slate-200/90">Doctor Portal</span>
+                            <span className="text-base font-medium tracking-tight text-slate-200/90">Patient Portal</span>
                         </div>
                     </div>
                     <div className="hidden items-center gap-2 sm:flex text-xs text-slate-400">
@@ -35,7 +35,7 @@ function DoctorLogin() {
 
                         <div className="rounded-2xl border border-slate-800/80 bg-slate-900/60 p-6 shadow-[0_0_0_1px_rgba(2,6,23,0.8),0_10px_40px_-10px_rgba(34,211,238,0.18)] backdrop-blur">
                             <div className="mb-6 text-center">
-                                <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight text-slate-100">Login To Doctor Account</h1>
+                                <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight text-slate-100">Login To Patient Account</h1>
                                 <p className="mt-2 text-sm text-slate-400">Join securely in minutes</p>
                             </div>
 
@@ -111,4 +111,4 @@ function DoctorLogin() {
   )
 }
 
-export default DoctorLogin
+export default PatientLogin
