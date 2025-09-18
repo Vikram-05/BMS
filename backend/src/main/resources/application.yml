@@ -1,0 +1,12 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: backend
+
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/BMS
+#      uri: mongodb+srv://kiloro3381_db_user:bgolG7KlAc4fC8oh@cluster0.kl90y0u.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+#      database: abc
