@@ -2,16 +2,16 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import DoctorDashboard from './Pages/DoctorDashboard';
-import PatientDashboard from './Pages/PatientDashboard2';
 import AiGenerated from './Pages/AiGenerated';
 import PatientSignup from './Pages/PatientSignup';
 import PatientLogin from './Pages/PatientLogin';
 import DoctorSignup from './Pages/DoctorSignup';
-import DoctorLogin from './Pages/DoctorLogin'; // Fixed import here
+import DoctorLogin from './Pages/DoctorLogin'; 
+
 
 import './App.css';
 import PatientDetails from './Pages/PatientDetails'
-// import PatientDashboard2 from './Pages/PatientDashboard2';
+import LabDashboard from './Pages/LabDashboard';
 
 function App() {
   return (
@@ -26,6 +26,7 @@ function App() {
         <Route path="/doctor-signup" element={<DoctorSignup />} />
         <Route path="/doctor-dashboard" element={<DoctorDashboard />} />
 
+        <Route path="/lab-dashboard" element={<LabDashboard />} />
         <Route path="/ai-generated" element={<AiGenerated />} />
       </Routes>
     </BrowserRouter>

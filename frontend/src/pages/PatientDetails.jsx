@@ -12,15 +12,18 @@ import { IoIosArrowBack } from "react-icons/io";
 import { UserInfo } from '../contexts/UserInfoProvider';
 import axios from 'axios';
 import AddDiagnosis from '../components/AddDiagnosis';
+import AiGenerated from './AiGenerated';
+import { useNavigate } from 'react-router-dom';
 
 
 function PatientDetails() {
-  
-   const [isClick,setIsClick] = useState(false)
-      const toggle = () => {
-          if(isClick) setIsClick(false)
-              else setIsClick(true)
-      }
+  const navigate = useNavigate()
+
+  const [isClick, setIsClick] = useState(false)
+  const toggle = () => {
+    if (isClick) setIsClick(false)
+    else setIsClick(true)
+  }
 
   const [PatientGender, setPatientGender] = useState("Male");
   const [allDiagnosis, setAllDiagnosis] = useState([])
@@ -52,7 +55,7 @@ function PatientDetails() {
   useEffect(() => {
     const userId1 = localStorage.getItem("userId");
 
-    const isReload = async() => {
+    const isReload = async () => {
       const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/user/${userId1}`);
 
       const { fullName, aadhar, phoneNumber, email, password, age, bloodGroup, gender, id, role } = response.data
@@ -89,7 +92,7 @@ function PatientDetails() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-black text-neutral-100 antialiased" style={{
+    <div className="min-h-screen bg-black text-neutral-100 antialiased overflow-x-hidden" style={{
       fontFamily: "Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, Apple Color Emoji, Segoe UI Emoji"
     }}>
       <div className="relative">
@@ -105,7 +108,7 @@ function PatientDetails() {
             <div className="size-8 rounded-md bg-gradient-to-br from-cyan-400/80 to-emerald-400/80 flex items-center justify-center ring-1 ring-white/20">
               <i data-lucide="activity" className="w-4 h-4 text-black/80"></i>
             </div>
-            <span className="text-[15px] font-medium text-neutral-300">Health Vault</span>
+            <span className="text-[15px] font-medium text-neutral-300">SwasthyaID</span>
           </div>
           <nav className="hidden sm:flex items-center gap-6">
 
@@ -125,9 +128,9 @@ function PatientDetails() {
         <section className="rounded-2xl border border-white/10 bg-gradient-to-b from-white/5 to-transparent p-6 sm:p-8 shadow-[0_10px_40px_-15px_rgba(0,0,0,0.6)]">
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
             <div className="flex items-start gap-4">
-              <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=200&auto=format&fit=crop&crop=faces" alt="Profile photo" className="h-14 w-14 sm:h-16 sm:w-16 rounded-xl object-cover ring-1 ring-white/20" />
+              <img src="https://img.freepik.com/premium-photo/happy-man-ai-generated-portrait-user-profile_1119669-1.jpg?w=2000" alt="Profile photo" className="h-14 w-14 sm:h-16 sm:w-16 rounded-xl object-cover ring-1 ring-white/20" />
               <div>
-                <h1 className=" translate-y-1.5 text-3xl sm:text-4xl tracking-tight font-semibold text-white">{userFullName}</h1>
+                <h1 className=" translate-y-1.5 text-3xl sm:text-4xl tracking-tight font-semibold text-white">{userFullName || "vikram kumar"}</h1>
 
               </div>
             </div>
@@ -143,8 +146,8 @@ function PatientDetails() {
               </button>
             </div>
           </div>
-          
-          {isClick && <AddDiagnosis/>}
+
+          {isClick && <AddDiagnosis setIsClick={setIsClick} />}
 
 
           <div className="mt-6 sm:mt-8 rounded-xl border border-white/10 bg-white/5 p-4 sm:p-5">
@@ -156,7 +159,7 @@ function PatientDetails() {
                 </div>
                 <div>
                   <p className="text-xs text-neutral-400">AADHAAR</p>
-                  <p className="text-sm font-medium text-neutral-200">{userAadhar}</p>
+                  <p className="text-sm font-medium text-neutral-200">{userAadhar || "986545723546"}</p>
                 </div>
               </div>
 
@@ -166,7 +169,7 @@ function PatientDetails() {
                 </div>
                 <div>
                   <p className="text-xs text-neutral-400">GENDER</p>
-                  <p className="text-sm font-medium text-neutral-200">{userGender} ({userAge})</p>
+                  <p className="text-sm font-medium text-neutral-200">{userGender || "Male"} ({userAge || 20})</p>
                 </div>
               </div>
 
@@ -176,7 +179,7 @@ function PatientDetails() {
                 </div>
                 <div>
                   <p className="text-xs text-neutral-400">BLOOD GROUP</p>
-                  <p className="text-sm font-medium text-neutral-200">{userBloodGroup}</p>
+                  <p className="text-sm font-medium text-neutral-200">{userBloodGroup || "B+"}</p>
                 </div>
               </div>
 
@@ -186,8 +189,8 @@ function PatientDetails() {
                 </div>
                 <div>
                   <p className="text-xs text-neutral-400">PHONE</p>
-                  <p className="text-sm font-medium text-neutral-200">+91 {userPhoneNumber}</p>
-                  <p className="text-xs text-neutral-400">{userEmail}</p>
+                  <p className="text-sm font-medium text-neutral-200">+91 {userPhoneNumber || "9865245785"}</p>
+                  <p className="text-xs text-neutral-400">{userEmail || "vikram@gmail.com"}</p>
                 </div>
               </div>
             </div>
@@ -196,65 +199,74 @@ function PatientDetails() {
 
 
         {/* <--------CHRONIC ILLNESS---------> */}
-        <div className='flex gap-4 '>
-          <section className="rounded-2xl border border-white/10 bg-gradient-to-b from-white/5 to-transparent p-4 sm:p-6 w-1/2 ">
-            <h3 className='font-semibold'>Chronic Illnesses</h3>
-            <div className='flex mt-6 space-x-3 flex-wrap gap-3 '>
-              <button id="clearBtn" className="inline-flex items-center gap-2 rounded-lg px-3 py-2.5 text-sm font-medium text-neutral-200 bg-white/5 hover:bg-white/10 border border-white/10 transition -translate-y-2 ">
+        <div className="flex flex-col gap-4 md:flex-row">
+          {/* Chronic Illnesses */}
+          <section className="rounded-2xl border border-white/10 bg-gradient-to-b from-white/5 to-transparent p-4 sm:p-6 md:w-1/2 w-full">
+            <h3 className="font-semibold">Chronic Illnesses</h3>
+            <div className="flex mt-6 flex-wrap gap-3">
+              <button className="inline-flex items-center gap-2 rounded-lg px-3 py-2.5 text-sm font-medium text-neutral-200 bg-white/5 hover:bg-white/10 border border-white/10 transition -translate-y-2">
                 Diabetes
               </button>
-              <button id="clearBtn" className="inline-flex items-center gap-2 rounded-lg px-3 py-2.5 text-sm font-medium text-neutral-200 bg-white/5 hover:bg-white/10 border border-white/10 transition -translate-y-2 mt">
+              <button className="inline-flex items-center gap-2 rounded-lg px-3 py-2.5 text-sm font-medium text-neutral-200 bg-white/5 hover:bg-white/10 border border-white/10 transition -translate-y-2">
                 Blood Pressure
               </button>
-              <button id="clearBtn" className="inline-flex items-center gap-2 rounded-lg px-3 py-2.5 text-sm font-medium text-neutral-200 bg-white/5 hover:bg-white/10 border border-white/10 transition -translate-y-2 mt">
+              <button className="inline-flex items-center gap-2 rounded-lg px-3 py-2.5 text-sm font-medium text-neutral-200 bg-white/5 hover:bg-white/10 border border-white/10 transition -translate-y-2">
                 Cancer
               </button>
-              <button id="clearBtn" className="inline-flex items-center gap-2 rounded-lg px-3 py-2.5 text-sm font-medium text-neutral-200 bg-white/5 hover:bg-white/10 border border-white/10 transition -translate-y-2 mt">
+              <button className="inline-flex items-center gap-2 rounded-lg px-3 py-2.5 text-sm font-medium text-neutral-200 bg-white/5 hover:bg-white/10 border border-white/10 transition -translate-y-2">
                 Artharitis
               </button>
-              <button id="clearBtn" className="inline-flex items-center gap-2 rounded-lg px-3 py-2.5 text-sm font-medium text-neutral-200 bg-white/5 hover:bg-white/10 border border-white/10 transition -translate-y-2 mt">
+              <button className="inline-flex items-center gap-2 rounded-lg px-3 py-2.5 text-sm font-medium text-neutral-200 bg-white/5 hover:bg-white/10 border border-white/10 transition -translate-y-2">
                 Parkinsons
               </button>
-              <button id="clearBtn" className="inline-flex items-center gap-2 rounded-lg px-3 py-2.5 text-sm font-medium text-neutral-200 bg-white/5 hover:bg-white/10 border border-white/10 transition -translate-y-2 mt">
+              <button className="inline-flex items-center gap-2 rounded-lg px-3 py-2.5 text-sm font-medium text-neutral-200 bg-white/5 hover:bg-white/10 border border-white/10 transition -translate-y-2">
                 Parkinsons
               </button>
-
             </div>
           </section>
-          <div className='flex gap-3 w-1/2'>
 
-            <section className="rounded-2xl border border-white/10 bg-gradient-to-b from-white/5 to-transparent p-4 sm:p-6 w-1/2">
-              <h3 className='font-semibold'>Allergies</h3>
-              <div className='flex mt-6 space-x-3 flex-wrap gap-3 ' style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
-                <button id="clearBtn" className="inline-flex items-center gap-2 rounded-lg px-3 py-2.5 text-sm font-medium text-neutral-200 bg-white/5 hover:bg-white/10 border border-white/10 transition -translate-y-2 ">
+          {/* Allergies and Regular Medicine Wrapper */}
+          <div className="flex flex-col gap-4 md:flex-row md:w-1/2 w-full">
+            {/* Allergies */}
+            <section className="p-4 rounded-2xl border border-white/10 bg-gradient-to-b from-white/5 to-transparent   sm:p-6 md:w-1/2 w-full">
+              <h3 className="font-semibold">Allergies</h3>
+              <div
+                className=" pt-4 flex  flex-wrap gap-3 overflow-x-auto scrollbar-hide"
+                style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+              >
+                <button className="inline-flex items-center gap-2 rounded-lg px-3 py-2.5 text-sm font-medium text-neutral-200 bg-white/5 hover:bg-white/10 border border-white/10 transition -translate-y-2">
                   Lactose
                 </button>
-                <button id="clearBtn" className="inline-flex items-center gap-2 rounded-lg px-3 py-2.5 text-sm font-medium text-neutral-200 bg-white/5 hover:bg-white/10 border border-white/10 transition -translate-y-2 mt">
+                <button className="inline-flex items-center gap-2 rounded-lg px-3 py-2.5 text-sm font-medium text-neutral-200 bg-white/5 hover:bg-white/10 border border-white/10 transition -translate-y-2">
                   Aspirin
                 </button>
-                <button id="clearBtn" className="inline-flex items-center gap-2 rounded-lg px-3 py-2.5 text-sm font-medium text-neutral-200 bg-white/5 hover:bg-white/10 border border-white/10 transition -translate-y-2 mt">
+                <button className="inline-flex items-center gap-2 rounded-lg px-3 py-2.5 text-sm font-medium text-neutral-200 bg-white/5 hover:bg-white/10 border border-white/10 transition -translate-y-2">
                   Peanuts
                 </button>
-
               </div>
             </section>
-            <section className="rounded-2xl border border-white/10 bg-gradient-to-b from-white/5 to-transparent p-4 sm:p-6 w-1/2">
-              <h3 className='font-semibold'>Regular Medicine</h3>
-              <div className='flex mt-6 space-x-3 flex-wrap gap-3 ' style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
-                <button id="clearBtn" className="inline-flex items-center gap-2 rounded-lg px-3 py-2.5 text-sm font-medium text-neutral-200 bg-white/5 hover:bg-white/10 border border-white/10 transition -translate-y-2 ">
+
+            {/* Regular Medicine */}
+            <section className="rounded-2xl border border-white/10 bg-gradient-to-b from-white/5 to-transparent p-4 sm:p-6 md:w-1/2 w-full">
+              <h3 className="font-semibold">Regular Medicine</h3>
+              <div
+                className="flex pt-4 flex-wrap gap-3 overflow-x-auto scrollbar-hide"
+                style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+              >
+                <button className="inline-flex items-center gap-2 rounded-lg px-3 py-2.5 text-sm font-medium text-neutral-200 bg-white/5 hover:bg-white/10 border border-white/10 transition -translate-y-2">
                   Glycomet
                 </button>
-                <button id="clearBtn" className="inline-flex items-center gap-2 rounded-lg px-3 py-2.5 text-sm font-medium text-neutral-200 bg-white/5 hover:bg-white/10 border border-white/10 transition -translate-y-2 mt">
+                <button className="inline-flex items-center gap-2 rounded-lg px-3 py-2.5 text-sm font-medium text-neutral-200 bg-white/5 hover:bg-white/10 border border-white/10 transition -translate-y-2">
                   Insulin
                 </button>
-                <button id="clearBtn" className="inline-flex items-center gap-2 rounded-lg px-3 py-2.5 text-sm font-medium text-neutral-200 bg-white/5 hover:bg-white/10 border border-white/10 transition -translate-y-2 mt">
+                <button className="inline-flex items-center gap-2 rounded-lg px-3 py-2.5 text-sm font-medium text-neutral-200 bg-white/5 hover:bg-white/10 border border-white/10 transition -translate-y-2">
                   NexovasGP
                 </button>
-
               </div>
             </section>
           </div>
         </div>
+
 
 
         <section className="rounded-2xl border border-white/10 bg-gradient-to-b from-white/5 to-transparent p-4 sm:p-6">
@@ -314,10 +326,80 @@ function PatientDetails() {
         <section>
           <div className="flex items-end justify-between mb-4">
             <h2 className="text-2xl sm:text-3xl tracking-tight font-semibold text-white">Diagnosis History</h2>
-            <div className="text-sm text-neutral-400"><span id="resultsCount">{allDiagnosis.length}</span> results</div>
+            <div className="text-sm text-neutral-400"><span id="resultsCount">{allDiagnosis.length || 2}</span> results</div>
           </div>
 
+
           <div id="cardsGrid" className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-5 ">
+            {/* Static data */}
+            <article
+              data-status="verified"
+              className="rounded-2xl border border-white/10 bg-white/5 p-4 sm:p-5"
+            >
+              <div className="flex items-start justify-between gap-4">
+                <div className="flex items-start gap-3">
+                  <div className="h-11 w-11 rounded-xl bg-gradient-to-br from-cyan-400/30 to-emerald-400/30 border border-white/10 flex items-center justify-center">
+          <GiKidneys />
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <h3 className="text-[18px] sm:text-lg font-semibold tracking-tight text-white">
+                        Chronic Kidney Disease
+                      </h3>
+                    </div>
+                    <div className="mt-1 flex items-center gap-3 text-sm text-neutral-400">
+                      <span className="inline-flex items-center gap-1.5">
+                        Suraj Kumar
+                      </span>
+                      <span className="text-neutral-600">•</span>
+                      <span className="inline-flex items-center gap-1.5">30 May 2025
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="mt-4 flex flex-wrap items-center gap-2">
+                <a onClick={() => navigate("/ai-generated")}
+                  className="inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-neutral-200 bg-white/5 hover:bg-white/10 border border-white/10 transition"
+                >
+                  Full report
+                </a>
+              </div>
+            </article>
+            <article
+              data-status="verified"
+              className="rounded-2xl border border-white/10 bg-white/5 p-4 sm:p-5"
+            >
+              <div className="flex items-start justify-between gap-4">
+                <div className="flex items-start gap-3">
+                  <div className="h-11 w-11 rounded-xl bg-gradient-to-br from-cyan-400/30 to-emerald-400/30 border border-white/10 flex items-center justify-center">
+                  <BsLungs />
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <h3 className="text-[18px] sm:text-lg font-semibold tracking-tight text-white">
+                        Hypothyroidism
+                      </h3>
+                    </div>
+                    <div className="mt-1 flex items-center gap-3 text-sm text-neutral-400">
+                      <span className="inline-flex items-center gap-1.5">
+                        Abhishek kumar
+                      </span>
+                      <span className="text-neutral-600">•</span>
+                      <span className="inline-flex items-center gap-1.5">22 May 2025
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="mt-4 flex flex-wrap items-center gap-2">
+                <a onClick={() => navigate("/ai-generated")}
+                  className="inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-neutral-200 bg-white/5 hover:bg-white/10 border border-white/10 transition"
+                >
+                  Full report
+                </a>
+              </div>
+            </article>
             {/* -----------DIAGNOSIS-HISTORY-CARD----------------- */}
 
             {allDiagnosis.map((item, index) => (
@@ -357,8 +439,7 @@ function PatientDetails() {
                   </div>
                 </div>
                 <div className="mt-4 flex flex-wrap items-center gap-2">
-                  <a
-                    href="#"
+                  <a onClick={() => navigate("/ai-generated")}
                     className="inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-neutral-200 bg-white/5 hover:bg-white/10 border border-white/10 transition"
                   >
                     Full report

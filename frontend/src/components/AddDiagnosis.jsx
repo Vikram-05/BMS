@@ -3,7 +3,7 @@ import { IoClose } from "react-icons/io5";
 import { FaBriefcaseMedical } from "react-icons/fa";
 import { IoMdAdd } from "react-icons/io";
 
-function AddDiagnosis() {
+function AddDiagnosis({setIsClick}) {
     return (
         <div>
             {/* add diagnosis */}
@@ -14,12 +14,12 @@ function AddDiagnosis() {
                         <div className="flex items-center gap-2">
                             <div className="h-8 w-8 rounded-lg bg-cyan-500/10 ring-1 ring-cyan-400/30 flex items-center justify-center">
                                 
-                            <FaBriefcaseMedical className="h-4 w-4 text-cyan-300" />
+                            <FaBriefcaseMedical  className="h-4 w-4 text-cyan-300" />
                             </div>
                             <h4 className="text-lg md:text-xl font-semibold tracking-tight text-white">Add New Diagnosis</h4>
                         </div>
                         <button id="close-modal" className="rounded-lg p-2 text-slate-300 hover:bg-white/10 ring-1 ring-white/10">
-                            <IoClose className="h-4 w-4 text-cyan-300" />
+                            <IoClose onClick={()=>{setIsClick(false)}} className="h-4 w-4 text-cyan-300" />
                         </button>
                     </div>
 
@@ -123,7 +123,7 @@ function AddDiagnosis() {
 
 
                         <div className="flex items-center justify-end gap-3 pt-2">
-                            <button type="button" id="close-modal-bottom" className="rounded-xl px-3.5 py-2 text-sm text-slate-300 ring-1 ring-white/10 hover:bg-white/10">Cancel</button>
+                            <button onClick={()=>{setIsClick(false)}} type="button" id="close-modal-bottom" className="rounded-xl px-3.5 py-2 text-sm text-slate-300 ring-1 ring-white/10 hover:bg-white/10">Cancel</button>
                             <button type="submit" className="relative inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-medium text-slate-900 bg-cyan-300/90 hover:bg-cyan-300 focus:outline-none ring-1 ring-cyan-200 overflow-hidden">
                                 <span className="absolute inset-0 -z-10 bg-cyan-500/30 blur-2xl"></span>
                                 <IoMdAdd data-lucide="sparkles" className="h-4 w-4"/>
