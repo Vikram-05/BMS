@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { IoIosSearch } from "react-icons/io";
 import { MdPersonSearch } from "react-icons/md";
 
-import AddDiagnosis from '../components/AddDiagnosis';
-
 function DoctorDashboard() {
+    const [isClick,setIsClick] = useState(false)
+    const toggle = () => {
+        if(isClick) setIsClick(false)
+            else setIsClick(true)
+    }
     return (
         <div className="min-h-screen bg-slate-950 text-slate-200 antialiased font-sans selection:bg-cyan-500/20 selection:text-cyan-200"
             style={{ fontFamily: "'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial" }}

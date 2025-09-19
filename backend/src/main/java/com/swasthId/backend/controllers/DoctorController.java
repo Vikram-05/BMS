@@ -28,7 +28,7 @@ public class DoctorController {
             return ResponseEntity.status(HttpStatus.CONFLICT).body("Email already exist");
         }
         DoctorResponse savedDoctor = doctorServices.saveDoctor(doctor);
-        return ResponseEntity.status(HttpStatus.OK).body(Map.of("doctor-data", savedDoctor));
+        return ResponseEntity.status(HttpStatus.OK).body( savedDoctor);
 
     }
     @PostMapping("/login")

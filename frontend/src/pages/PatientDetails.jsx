@@ -15,6 +15,12 @@ import AddDiagnosis from '../components/AddDiagnosis';
 
 
 function PatientDetails() {
+  
+   const [isClick,setIsClick] = useState(false)
+      const toggle = () => {
+          if(isClick) setIsClick(false)
+              else setIsClick(true)
+      }
 
   const [PatientGender, setPatientGender] = useState("Male");
   const [allDiagnosis, setAllDiagnosis] = useState([])
@@ -126,7 +132,7 @@ function PatientDetails() {
               </div>
             </div>
             <div className="flex items-center gap-2">
-              <button className="inline-flex items-center gap-2 rounded-lg px-3.5 py-2.5 text-sm font-medium text-white bg-gradient-to-r from-cyan-500/90 to-emerald-500/90 hover:from-cyan-400 hover:to-emerald-400 transition">
+              <button onClick={toggle} className="inline-flex items-center gap-2 rounded-lg px-3.5 py-2.5 text-sm font-medium text-white bg-gradient-to-r from-cyan-500/90 to-emerald-500/90 hover:from-cyan-400 hover:to-emerald-400 transition">
 
                 Add Diagnosis
               </button>
@@ -137,6 +143,8 @@ function PatientDetails() {
               </button>
             </div>
           </div>
+          
+          {isClick && <AddDiagnosis/>}
 
 
           <div className="mt-6 sm:mt-8 rounded-xl border border-white/10 bg-white/5 p-4 sm:p-5">

@@ -11,11 +11,10 @@ function DoctorInfoProvider({ children }) {
   const [role, setRole] = useState("");
   const [doctorLicense, setDoctorLicense] = useState("");
   const [doctorPhoneNumber, setDoctorPhoneNumber] = useState("");
-  const [doctorPassword, setDoctorPassword] = useState("");  
   const [doctorSpecializations, setDoctorSpecializations] = useState([]);  
 
   return (
-    <doctorInfo.Provider value={{ doctorId, doctorFullName, doctorEmail, doctorAadhar, doctorPhoneNumber, doctorLicense, doctorPassword, setDoctorId, setDoctorFullName, setDoctorEmail, setDoctorAadhar, setDoctorLicense, role, setRole, setDoctorPhoneNumber, setDoctorPassword ,doctorSpecializations,setDoctorSpecializations}}>
+    <doctorInfo.Provider value={{ doctorId, doctorFullName, doctorEmail, doctorAadhar, doctorPhoneNumber, doctorLicense, setDoctorId, setDoctorFullName, setDoctorEmail, setDoctorAadhar, setDoctorLicense, role, setRole, setDoctorPhoneNumber ,doctorSpecializations,setDoctorSpecializations}}>
       {children}
     </doctorInfo.Provider>
   )
