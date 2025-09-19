@@ -360,7 +360,7 @@ function PatientDetails() {
               </div>
               <div className="mt-4 flex flex-wrap items-center gap-2">
                 <a onClick={() => navigate("/ai-generated")}
-                  className="inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-neutral-200 bg-white/5 hover:bg-white/10 border border-white/10 transition"
+                  className="cursor-pointer inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-neutral-200 bg-white/5 hover:bg-white/10 border border-white/10 transition"
                 >
                   Full report
                 </a>
@@ -394,7 +394,7 @@ function PatientDetails() {
               </div>
               <div className="mt-4 flex flex-wrap items-center gap-2">
                 <a onClick={() => navigate("/ai-generated")}
-                  className="inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-neutral-200 bg-white/5 hover:bg-white/10 border border-white/10 transition"
+                  className="cursor-pointer inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-neutral-200 bg-white/5 hover:bg-white/10 border border-white/10 transition"
                 >
                   Full report
                 </a>

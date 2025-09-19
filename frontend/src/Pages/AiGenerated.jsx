@@ -6,8 +6,10 @@ import { RiTestTubeFill } from "react-icons/ri";
 import { TbReportMedical } from "react-icons/tb";
 import { MdOutlinePreview } from "react-icons/md";
 import { FaDownload } from "react-icons/fa6";
+import { useNavigate } from 'react-router-dom';
 
 function AiGenerated() {
+  const navigate = useNavigate()
   return (
     <div div className="min-h-screen bg-black text-neutral-100 antialiased overflow-x-hidden" style={{
       fontFamily: "Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, Apple Color Emoji, Segoe UI Emoji"
@@ -25,9 +27,9 @@ function AiGenerated() {
 
         <header className="mb-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="flex items-center gap-2">
+            <div onClick={()=>{navigate(-1)}} className=" flex items-center gap-2 ">
 
-              <button id="shareBtn" className="inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-white bg-gradient-to-r from-cyan-500/90 to-emerald-500/90 hover:from-cyan-400 hover:to-emerald-400 transition">
+              <button id="shareBtn" className=" cursor-pointer inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-white bg-gradient-to-r from-cyan-500/90 to-emerald-500/90 hover:from-cyan-400 hover:to-emerald-400 transition">
                 <IoIosArrowBack />
                 Back
               </button>
